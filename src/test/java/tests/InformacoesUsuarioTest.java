@@ -17,6 +17,9 @@ public class InformacoesUsuarioTest {
         //go to webpage
         navegador.get("http://www.juliodelima.com.br/taskit");
         
+        //maximize browser window
+        navegador.manage().window().maximize();
+        
         //make a validation
         assertEquals(1, 1);
         
