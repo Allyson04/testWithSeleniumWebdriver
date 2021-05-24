@@ -11,4 +11,22 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     
+    <dependencies>
+        <!--maven repository-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+
+        <!--selenium repository-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.0</version>
+        </dependency>
+    </dependencies>
+    
 </project>
