@@ -10,6 +10,9 @@ public class InformacoesUsuarioTest {
     public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
         System.setProperty("webdriver.chrome.driver", "C:\\projects\\assets\\drivers\\chromedriver.exe");
         WebDriver navegador = new ChromeDriver();
+        
+        navegador.get("http://www.juliodelima.com.br/taskit");
+        
         assertEquals(1, 1);
         
     }
