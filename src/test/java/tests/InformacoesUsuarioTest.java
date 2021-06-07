@@ -1,7 +1,9 @@
 package tests;
 
 import java.util.concurrent.TimeUnit;
+import org.junit.After;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +11,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class InformacoesUsuarioTest {
-    @Test
-    public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
+    private WebDriver navegador;
+    
+    @Before
+    public void setUp() {
         //select a browser driver, in this case is chromedriver
         System.setProperty("webdriver.chrome.driver", "C:\\projects\\assets\\drivers\\chromedriver.exe");
         
         //create a variable to indicate the instruction using chromedriver
-        WebDriver navegador = new ChromeDriver();
+        navegador = new ChromeDriver();
         navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         
         //go to webpage
@@ -23,7 +27,10 @@ public class InformacoesUsuarioTest {
         
         //maximize browser window
         navegador.manage().window().maximize();
-        
+    }
+    
+    @Test
+    public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
         //click on "sign in"
         navegador.findElement(By.linkText("Sign in")).click();
         
@@ -44,5 +51,11 @@ public class InformacoesUsuarioTest {
         String loginName = confirmMessage.getText();
         assertEquals("Hi, Allyson Eduardo", loginName);
         
+    }
+    
+    @After
+    public void tearDown() {
+//      closing the window
+        navegador.close();
     }
 }
