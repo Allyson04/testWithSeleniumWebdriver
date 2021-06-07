@@ -32,7 +32,7 @@ public class InformacoesUsuarioTest {
         
         //type login
         formSigninbox.findElement(By.name("login")).sendKeys("allyson04");
-
+        
         //type password
         formSigninbox.findElement(By.name("password")).sendKeys("123456");
 
