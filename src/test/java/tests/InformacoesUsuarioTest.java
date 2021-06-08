@@ -28,10 +28,7 @@ public class InformacoesUsuarioTest {
         
         //maximize browser window
         navegador.manage().window().maximize();
-    }
-    
-    @Test
-    public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
+        
         //click on "sign in"
         navegador.findElement(By.linkText("Sign in")).click();
         
@@ -43,7 +40,7 @@ public class InformacoesUsuarioTest {
         
         //type password
         formSigninbox.findElement(By.name("password")).sendKeys("123456");
-
+        
         //click on "sign in" inside the modal "sign in"
         formSigninbox.findElement(By.linkText("SIGN IN")).click();
         
@@ -52,7 +49,10 @@ public class InformacoesUsuarioTest {
         
         //click "MORE DATA ABOUT YOU"
         navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
-        
+    }
+    
+    //@Test
+    public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
         //click button "data-target: addmoredata"
         navegador.findElement(By.cssSelector("button[data-target=addmoredata]")).click();
         
@@ -75,7 +75,8 @@ public class InformacoesUsuarioTest {
         WebElement confirmContainer = navegador.findElement(By.id("toast-container"));
         String confirmMessage = confirmContainer.getText();
         
-        assertEquals("Your contact has been added!", confirmMessage);
+        //click remove  #moredata > div.row.somepadding > ul > li:nth-child(1) > a  
+        navegador.findElement(By.cssSelector("#moredata > div.row.somepadding > ul > li:nth-child(1) > a")).click();
     }
     
     @After
