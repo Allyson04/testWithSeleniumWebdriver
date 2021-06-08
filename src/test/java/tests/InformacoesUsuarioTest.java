@@ -9,7 +9,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InformacoesUsuarioTest {
     private WebDriver navegador;
@@ -51,7 +53,7 @@ public class InformacoesUsuarioTest {
         navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
     }
     
-    //@Test
+    @Test
     public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
         //click button "data-target: addmoredata"
         navegador.findElement(By.cssSelector("button[data-target=addmoredata]")).click();
@@ -74,14 +76,32 @@ public class InformacoesUsuarioTest {
         //assert "Your contact has been added!"
         WebElement confirmContainer = navegador.findElement(By.id("toast-container"));
         String confirmMessage = confirmContainer.getText();
+    }
+    
+    @Test
+    public void removeUserContact() {
+        //click remove link from "(21) 965999999" number
+        navegador.findElement(By.xpath("//span[text()=\"(21) 965999999\"]/following::a")).click();
         
-        //click remove  #moredata > div.row.somepadding > ul > li:nth-child(1) > a  
-        navegador.findElement(By.cssSelector("#moredata > div.row.somepadding > ul > li:nth-child(1) > a")).click();
+        //confirm alert
+        navegador.switchTo().alert().accept();
+        
+        //check  "Rest in peace, dear phone!" 
+        WebElement popContainer = navegador.findElement(By.id("toast-container"));
+        String message = popContainer.getText();
+        assertEquals("Rest in peace, dear phone!", message);
+        
+        //wait 10 seconds to message disappear
+        WebDriverWait waitPopMessage = new WebDriverWait(navegador, 10);
+        waitPopMessage.until(ExpectedConditions.stalenessOf(popContainer));
+
+        //click "Logout"
+        navegador.findElement(By.linkText("Logout")).click();
     }
     
     @After
     public void tearDown() {
 //      closing the window
-//        navegador.close();
+        navegador.close();
     }
 }
