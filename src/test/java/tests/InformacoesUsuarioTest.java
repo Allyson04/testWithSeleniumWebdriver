@@ -1,12 +1,16 @@
 package tests;
 
 import java.util.concurrent.TimeUnit;
+import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.annotation.Param;
+import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +20,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.Generator;
 import support.Screenshot;
+
+@RunWith(DataDrivenTestRunner.class)
+@DataLoader(filePaths = "UserInfoTestData.csv")
 
 public class InformacoesUsuarioTest {
     private WebDriver navegador;
@@ -61,7 +68,7 @@ public class InformacoesUsuarioTest {
     }
     
     @Test
-    public void testAdicionarUmaInformacaoAdicionalDoUsuario() {
+    public void testAdicionarUmaInformacaoAdicionalDoUsuario(@Param(name="type")String type, @Param(name="contact")String contact, @Param(name="message")String message) {
         //click button "data-target: addmoredata"
         navegador.findElement(By.cssSelector("button[data-target=addmoredata]")).click();
         
@@ -72,10 +79,10 @@ public class InformacoesUsuarioTest {
         WebElement selectType = modalAddMoreData.findElement(By.cssSelector("select[name=type]"));
         
         //select option "value: phone"
-        new Select(selectType).selectByValue("phone");
+        new Select(selectType).selectByValue(type);
         
         //insert phone number in "name: contact"
-        modalAddMoreData.findElement(By.name("contact")).sendKeys("(21) 965999999");
+        modalAddMoreData.findElement(By.name("contact")).sendKeys(contact);
         
         //click "SAVE" button 
         modalAddMoreData.findElement(By.linkText("SAVE")).click();
@@ -83,9 +90,10 @@ public class InformacoesUsuarioTest {
         //assert "Your contact has been added!"
         WebElement confirmContainer = navegador.findElement(By.id("toast-container"));
         String confirmMessage = confirmContainer.getText();
+        assertEquals(message, confirmMessage);
     }
     
-    @Test
+//    @Test
     public void removeUserContact() {
         //click remove link from "(21) 965999999" number
         navegador.findElement(By.xpath("//span[text()=\"(21) 965999999\"]/following::a")).click();
