@@ -1,5 +1,5 @@
-testAdicionarUmaInformacaoAdicionalDoUsuario,type,contact,message,Duration(ms)
-"",phone,+51999999999,Your contact has been added!,748.0
-"",email,allysoneduardo@gmail.com,Your contact has been added!,717.0
-"",phone,+51999999231,Your contact has been added!,706.0
-"",phone,+51999992222,Your contact has been added!,746.0
+testAdicionarUmaInformacaoAdicionalDoUsuario,type,contact,message,Duration(ms),Duration(ms),Duration(ms)
+"",phone,+51999999999,Your contact has been added!,722.0,722.0,722.0
+"",email,allysoneduardo@gmail.com,Your contact has been added!,788.0,788.0,788.0
+"",phone,+51999999231,Your contact has been added!,830.0,830.0,830.0
+"",phone,+51999992222,Your contact has been added!,947.0,947.0,947.0

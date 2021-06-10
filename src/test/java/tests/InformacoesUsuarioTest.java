@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import support.Generator;
 import support.Screenshot;
+import support.Web;
 
 @RunWith(DataDrivenTestRunner.class)
 @DataLoader(filePaths = "UserInfoTestData.csv")
@@ -32,19 +33,18 @@ public class InformacoesUsuarioTest {
     
     @Before
     public void setUp() {
-        //select a browser driver, in this case is chromedriver
-        System.setProperty("webdriver.chrome.driver", "C:\\projects\\assets\\drivers\\chromedriver.exe");
+        navegador = Web.createChrome();
         
         //create a variable to indicate the instruction using chromedriver
         navegador = new ChromeDriver();
         navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        
+
         //go to webpage
         navegador.get("http://www.juliodelima.com.br/taskit");
         
         //maximize browser window
         navegador.manage().window().maximize();
-        
+
         //click on "sign in"
         navegador.findElement(By.linkText("Sign in")).click();
         
