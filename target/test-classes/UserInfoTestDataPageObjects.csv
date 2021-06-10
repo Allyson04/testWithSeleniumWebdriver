@@ -1,0 +1,3 @@
+testAdicionarUmaInformacaoAdicionalDoUsuario,login,password,type,contact,messageExpected,Duration(ms),Duration(ms)
+"",allyson04,123456,phone,(21) 965999999,Your contact has been added!,3294.0,3294.0
+"",allyson04,123456,email,allysoneduardo,Your contact has been added!,2874.0,2874.0

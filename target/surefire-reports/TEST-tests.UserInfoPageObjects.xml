@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="tests.UserInfoPageObjects" time="7.08" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="tests.UserInfoPageObjects" time="15.618" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_291\jre\bin"/>
@@ -65,5 +65,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="tests.UserInfoPageObjects" name="testAdicionarUmaInformacaoAdicionalDoUsuario" time="7.08"/>
+  <testcase classname="tests.UserInfoPageObjects" name="testAdicionarUmaInformacaoAdicionalDoUsuario{password=123456, Duration(ms)=2222.0, contact=(21) 965999999, login=allyson04, type=phone, messageExpected=Your contact has been added!}" time="8.891"/>
+  <testcase classname="tests.UserInfoPageObjects" name="testAdicionarUmaInformacaoAdicionalDoUsuario{password=123456, Duration(ms)=2871.0, contact=allysoneduardo, login=allyson04, type=email, messageExpected=Your contact has been added!}" time="6.727"/>
 </testsuite>
